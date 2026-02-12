@@ -1,9 +1,13 @@
 import { test, expect } from "@playwright/test";
+import { mockFakeStoreAPI } from "./helpers/api-mock";
 
 test.describe("Página de Detalhe do Produto (PDP)", () => {
+  test.beforeEach(async ({ page }) => {
+    await mockFakeStoreAPI(page);
+  });
+
   test("deve exibir detalhes do produto", async ({ page }) => {
     await page.goto("/product/1");
-
 
     await expect(page.getByRole("heading", { level: 1 })).toBeVisible({
       timeout: 15000,
