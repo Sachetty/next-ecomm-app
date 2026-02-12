@@ -9,10 +9,6 @@ import type {
   PaginationParams,
 } from "@/types/product";
 
-/**
- * Query key factory para produtos.
- * Centraliza as keys para evitar colisões e facilitar invalidação.
- */
 export const productKeys = {
   all: ["products"] as const,
   lists: () => [...productKeys.all, "list"] as const,
@@ -23,10 +19,6 @@ export const productKeys = {
   categories: () => [...productKeys.all, "categories"] as const,
 };
 
-/**
- * Pagina um array de produtos.
- * Função pura, separada para facilitar testes (SRP).
- */
 function paginateProducts(
   allProducts: Product[],
   { page, itemsPerPage }: PaginationParams
@@ -45,14 +37,6 @@ function paginateProducts(
   };
 }
 
-/**
- * Hook para buscar todos os produtos com paginação client-side.
- *
- * A ordenação é feita pela API (?sort=asc|desc).
- * A paginação é feita no `select` (sem re-fetch ao trocar de página).
- *
- * Quando o sort muda, a queryKey muda e o React Query re-fetcha da API.
- */
 export function useProducts(
   pagination: PaginationParams,
   params?: GetProductsParams

@@ -4,9 +4,8 @@ import {
   getCategories,
   getProductsByCategory,
 } from "@/services/productService";
-import { mockProducts, mockProduct } from "../__mocks__/products";
+import { mockProducts, mockProduct } from "@/test-utils/mocks";
 
-// Mock do módulo api
 jest.mock("@/services/api", () => ({
   apiFetch: jest.fn(),
 }));

@@ -14,10 +14,6 @@ interface ProductCardProps {
   product: Product;
 }
 
-/**
- * Card de produto individual.
- * Responsabilidade única: exibir os dados de um produto em formato card.
- */
 export default function ProductCard({ product }: ProductCardProps) {
   return (
     <Link href={`/product/${product.id}`} className="no-underline">
@@ -28,8 +24,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           flexDirection: "column",
           cursor: "pointer",
         }}
-      >
-        {/* Imagem */}
+      > 
         <Box
           sx={{
             position: "relative",
@@ -55,7 +50,6 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
         </Box>
 
-        {/* Conteúdo */}
         <CardContent
           sx={{
             flex: 1,
@@ -66,7 +60,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             "&:last-child": { pb: 2 },
           }}
         >
-          {/* Categoria */}
           <Chip
             label={product.category}
             size="small"
@@ -79,7 +72,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             }}
           />
 
-          {/* Título */}
           <Typography
             variant="body1"
             sx={{
@@ -95,7 +87,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             {product.title}
           </Typography>
 
-          {/* Rating */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
             <Rating
               value={product.rating.rate}
@@ -108,7 +99,6 @@ export default function ProductCard({ product }: ProductCardProps) {
             </Typography>
           </Box>
 
-          {/* Preço */}
           <Typography
             variant="h6"
             sx={{

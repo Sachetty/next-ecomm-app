@@ -19,15 +19,9 @@ interface ProductDetailProps {
   product: Product;
 }
 
-/**
- * Componente de detalhe do produto (PDP).
- * Responsabilidade única: exibir todas as informações de um produto.
- * Recebe o produto como prop (dados buscados no server component).
- */
 export default function ProductDetail({ product }: ProductDetailProps) {
   return (
     <Box>
-      {/* Breadcrumbs */}
       <Breadcrumbs sx={{ mb: 3 }}>
         <Link href="/" className="no-underline hover:underline">
           <Typography variant="body2" color="text.secondary">
@@ -55,7 +49,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
         </Typography>
       </Breadcrumbs>
 
-      {/* Layout principal: imagem + info */}
       <Box
         sx={{
           display: "flex",
@@ -63,7 +56,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           gap: { xs: 3, md: 6 },
         }}
       >
-        {/* Imagem */}
         <Box
           sx={{
             flex: { md: "0 0 45%" },
@@ -90,7 +82,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           />
         </Box>
 
-        {/* Informações */}
         <Box
           sx={{
             flex: 1,
@@ -99,7 +90,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             gap: 2,
           }}
         >
-          {/* Categoria */}
           <Chip
             label={product.category}
             size="small"
@@ -112,12 +102,10 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             }}
           />
 
-          {/* Título */}
           <Typography variant="h4" component="h1" sx={{ fontWeight: 700 }}>
             {product.title}
           </Typography>
 
-          {/* Rating */}
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
             <Rating
               value={product.rating.rate}
@@ -129,7 +117,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </Typography>
           </Box>
 
-          {/* Preço */}
           <Typography
             variant="h3"
             sx={{ fontWeight: 700, color: "secondary.main" }}
@@ -139,7 +126,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           <Divider />
 
-          {/* Descrição */}
           <Box>
             <Typography
               variant="subtitle1"
@@ -158,7 +144,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
 
           <Divider />
 
-          {/* Benefícios */}
           <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
               <LocalShippingOutlinedIcon
@@ -180,7 +165,6 @@ export default function ProductDetail({ product }: ProductDetailProps) {
             </Box>
           </Box>
 
-          {/* Botão de compra */}
           <Button
             variant="contained"
             size="large"
@@ -194,8 +178,7 @@ export default function ProductDetail({ product }: ProductDetailProps) {
           >
             Adicionar ao Carrinho
           </Button>
-
-          {/* Voltar */}
+          
           <Button
             component={Link}
             href="/"

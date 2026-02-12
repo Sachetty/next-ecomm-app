@@ -38,7 +38,6 @@ export default function Header() {
       >
         <Container maxWidth="lg">
           <Toolbar disableGutters sx={{ justifyContent: "space-between" }}>
-            {/* Logo */}
             <Link
               href="/"
               className="flex items-center gap-2 no-underline"
@@ -57,7 +56,6 @@ export default function Header() {
               </Typography>
             </Link>
 
-            {/* Desktop Nav */}
             <Box
               component="nav"
               sx={{ display: { xs: "none", md: "flex" }, gap: 3 }}
@@ -83,7 +81,6 @@ export default function Header() {
               ))}
             </Box>
 
-            {/* Mobile Menu Button */}
             <IconButton
               edge="end"
               aria-label="menu"
@@ -95,8 +92,7 @@ export default function Header() {
           </Toolbar>
         </Container>
       </AppBar>
-
-      {/* Mobile Drawer */}
+           
       <Drawer
         anchor="right"
         open={mobileOpen}

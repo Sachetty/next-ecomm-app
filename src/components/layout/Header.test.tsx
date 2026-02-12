@@ -1,7 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Header from "@/components/layout/Header";
 
-// Mock next/link
 jest.mock("next/link", () => ({
   __esModule: true,
   default: ({

@@ -1,7 +1,7 @@
 import { renderHook, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useProduct } from "@/hooks/useProduct";
-import { mockProduct } from "../__mocks__/products";
+import { mockProduct } from "@/test-utils/mocks";
 import type React from "react";
 
 // Mock do productService

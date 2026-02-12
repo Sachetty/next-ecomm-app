@@ -1,32 +1,37 @@
-/**
- * Configuração base da API.
- * Centraliza a URL e o fetch para facilitar manutenção (SOLID - SRP).
- */
 const BASE_URL = "https://fakestoreapi.com";
+const FETCH_TIMEOUT_MS = 10_000;
 
-/**
- * Fetch wrapper com tratamento de erro padronizado.
- * Princípio da Responsabilidade Única: esta função cuida apenas de
- * fazer o request HTTP e tratar erros genéricos.
- */
 export async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit
 ): Promise<T> {
   const url = `${BASE_URL}${endpoint}`;
 
-  const response = await fetch(url, {
-    ...options,
-    headers: {
-      ...options?.headers,
-    },
-  });
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
 
-  if (!response.ok) {
-    throw new Error(
-      `API Error: ${response.status} ${response.statusText} - ${url}`
-    );
+  try {
+    const response = await fetch(url, {
+      ...options,
+      signal: controller.signal,
+      headers: {
+        ...options?.headers,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `API Error: ${response.status} ${response.statusText} - ${url}`
+      );
+    }
+
+    return response.json() as Promise<T>;
+  } catch (error) {
+    if (error instanceof DOMException && error.name === "AbortError") {
+      throw new Error(`API Timeout: Request to ${url} timed out after ${FETCH_TIMEOUT_MS}ms`);
+    }
+    throw error;
+  } finally {
+    clearTimeout(timeoutId);
   }
-
-  return response.json() as Promise<T>;
 }

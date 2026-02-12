@@ -25,7 +25,6 @@ export default function Footer() {
     >
       <Container maxWidth="lg">
         <Grid container spacing={4}>
-          {/* Brand */}
           <Grid size={{ xs: 12, md: 4 }}>
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 2 }}>
               <StorefrontIcon sx={{ color: "#FF6B00", fontSize: 28 }} />
@@ -39,7 +38,6 @@ export default function Footer() {
             </Typography>
           </Grid>
 
-          {/* Links */}
           <Grid size={{ xs: 6, md: 4 }}>
             <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2 }}>
               Navegação
@@ -64,7 +62,6 @@ export default function Footer() {
             </Box>
           </Grid>
 
-          {/* Info */}
           <Grid size={{ xs: 6, md: 4 }}>
             <Typography variant="subtitle1" sx={{ fontWeight: 600, mb: 2 }}>
               Informações

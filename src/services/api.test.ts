@@ -1,6 +1,5 @@
 import { apiFetch } from "@/services/api";
 
-// Mock global fetch
 const mockFetch = jest.fn();
 global.fetch = mockFetch;
 
