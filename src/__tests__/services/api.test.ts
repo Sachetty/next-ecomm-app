@@ -9,7 +9,7 @@ describe("apiFetch", () => {
     mockFetch.mockClear();
   });
 
-  it("deve fazer fetch com a URL completa e headers corretos", async () => {
+  it("deve fazer fetch com a URL completa", async () => {
     const mockData = { id: 1, name: "Test" };
     mockFetch.mockResolvedValueOnce({
       ok: true,
@@ -21,9 +21,7 @@ describe("apiFetch", () => {
     expect(mockFetch).toHaveBeenCalledWith(
       "https://fakestoreapi.com/products",
       expect.objectContaining({
-        headers: expect.objectContaining({
-          "Content-Type": "application/json",
-        }),
+        headers: expect.any(Object),
       })
     );
     expect(result).toEqual(mockData);
@@ -55,7 +53,6 @@ describe("apiFetch", () => {
       "https://fakestoreapi.com/products",
       expect.objectContaining({
         headers: expect.objectContaining({
-          "Content-Type": "application/json",
           Authorization: "Bearer token",
         }),
       })

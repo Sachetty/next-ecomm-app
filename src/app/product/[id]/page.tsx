@@ -11,15 +11,21 @@ interface ProductPageProps {
 
 /**
  * Gera os parâmetros estáticos para SSG.
- * O Next.js vai pré-renderizar uma página para cada produto no build time.
- * Isso é essencial para performance e SEO.
+ * Tenta pré-renderizar uma página para cada produto no build time.
+ * Se a API estiver indisponível (ex: 403 em ambientes cloud),
+ * retorna array vazio e as páginas são geradas sob demanda (SSR).
  */
 export async function generateStaticParams() {
-  const products = await getProducts();
+  try {
+    const products = await getProducts();
 
-  return products.map((product) => ({
-    id: String(product.id),
-  }));
+    return products.map((product) => ({
+      id: String(product.id),
+    }));
+  } catch {
+    // API indisponível no build - páginas serão geradas on-demand
+    return [];
+  }
 }
 
 /**
