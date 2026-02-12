@@ -25,9 +25,8 @@ export interface Product {
 }
 
 /**
- * Parâmetros para busca de produtos com paginação e ordenação.
- * A FakeStore API usa `limit` e `sort` como query params.
- * Como não há offset nativo, a paginação é feita client-side.
+ * Parâmetros de ordenação da API.
+ * A FakeStore API suporta sort=asc|desc (ordena por ID).
  */
 export interface GetProductsParams {
   sort?: "asc" | "desc";

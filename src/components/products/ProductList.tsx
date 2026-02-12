@@ -111,8 +111,8 @@ export default function ProductList() {
             onChange={handleSortChange}
           >
             <MenuItem value="">Padrão</MenuItem>
-            <MenuItem value="asc">Preço: Menor → Maior</MenuItem>
-            <MenuItem value="desc">Preço: Maior → Menor</MenuItem>
+            <MenuItem value="asc">Crescente</MenuItem>
+            <MenuItem value="desc">Decrescente</MenuItem>
           </Select>
         </FormControl>
       </Box>
