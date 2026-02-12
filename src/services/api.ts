@@ -1,14 +1,5 @@
-/**
- * Configuração base da API.
- * Centraliza a URL e o fetch para facilitar manutenção (SOLID - SRP).
- */
 const BASE_URL = "https://fakestoreapi.com";
 
-/**
- * Fetch wrapper com tratamento de erro padronizado.
- * Princípio da Responsabilidade Única: esta função cuida apenas de
- * fazer o request HTTP e tratar erros genéricos.
- */
 export async function apiFetch<T>(
   endpoint: string,
   options?: RequestInit

@@ -12,11 +12,6 @@ interface ThemeProviderProps {
   children: React.ReactNode;
 }
 
-/**
- * ThemeProvider com Emotion Cache para SSR.
- * Garante que os estilos gerados pelo Emotion no servidor
- * sejam injetados corretamente no HTML, evitando hydration mismatch.
- */
 export default function ThemeProvider({ children }: ThemeProviderProps) {
   const [{ cache, flush }] = useState(() => {
     const cache = createCache({ key: "mui" });

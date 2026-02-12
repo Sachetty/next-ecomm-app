@@ -19,9 +19,6 @@ import type { GetProductsParams } from "@/types/product";
 
 const ITEMS_PER_PAGE = 8;
 
-/**
- * Skeleton de loading para o ProductCard.
- */
 function ProductCardSkeleton() {
   return (
     <Card sx={{ height: "100%" }}>
@@ -37,14 +34,6 @@ function ProductCardSkeleton() {
   );
 }
 
-/**
- * Componente de listagem de produtos com paginação e ordenação.
- *
- * Responsabilidades:
- * - Gerenciar estado de paginação e ordenação
- * - Renderizar grid de ProductCards
- * - Exibir estados de loading e erro
- */
 export default function ProductList() {
   const [page, setPage] = useState(1);
   const [sort, setSort] = useState<GetProductsParams["sort"]>(undefined);
@@ -68,7 +57,6 @@ export default function ProductList() {
     setPage(1);
   };
 
-  // Estado de erro
   if (isError) {
     return (
       <Alert severity="error" sx={{ my: 4 }}>
@@ -80,7 +68,6 @@ export default function ProductList() {
 
   return (
     <Box>
-      {/* Header da listagem: título + ordenação */}
       <Box
         sx={{
           display: "flex",
@@ -117,7 +104,6 @@ export default function ProductList() {
         </FormControl>
       </Box>
 
-      {/* Grid de produtos */}
       <Grid container spacing={3}>
         {isLoading
           ? Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
@@ -132,7 +118,6 @@ export default function ProductList() {
             ))}
       </Grid>
 
-      {/* Paginação */}
       {data && data.totalPages > 1 && (
         <Box
           sx={{

@@ -1,8 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ProductCard from "@/components/products/ProductCard";
-import { mockProduct } from "../__mocks__/products";
+import { mockProduct } from "@/test-utils/mocks";
 
-// Mock next/image
 jest.mock("next/image", () => ({
   __esModule: true,
   default: (props: Record<string, unknown>) => {
@@ -11,7 +10,6 @@ jest.mock("next/image", () => ({
   },
 }));
 
-// Mock next/link
 jest.mock("next/link", () => ({
   __esModule: true,
   default: ({
